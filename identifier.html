@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Identifier</title>
+    <link rel="stylesheet" href="identifier.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>AI Waste Identifier</h1>
+
+        <p>
+            Enter any waste item and get disposal guidance.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Example: broken calculator, toothbrush, milk packet..."
+            >
+
+            <button onclick="searchWaste()">
+                Identify
+            </button>
+
+        </div>
+
+        <div id="loading"></div>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="identifier.js"></script>
+
+</body>
+</html>

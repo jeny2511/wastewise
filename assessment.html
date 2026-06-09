@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteWise Assessment</title>
+
+    <link rel="stylesheet" href="assessment.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>WasteWise Assessment</h1>
+
+        <p>
+            Answer the following questions to test your waste management awareness.
+        </p>
+
+        <div id="name-section">
+
+            <h2>Enter Your Name</h2>
+
+            <input
+                type="text"
+                id="userName"
+                placeholder="Enter your name"
+            >
+
+            <button id="start-btn">
+                Start Assessment
+            </button>
+
+        </div>
+
+        <form id="quiz-form" style="display:none;">
+
+            <div id="question-container"></div>
+
+            <button type="submit" id="submit-btn">
+                Submit Assessment
+            </button>
+
+        </form>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="questions.js"></script>
+    <script type="module" src="assessment.js"></script>
+
+</body>
+</html>

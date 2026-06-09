@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteWise Dashboard</title>
+
+    <link rel="stylesheet" href="impact.css">
+</head>
+<body>
+
+    <div id="login-section">
+
+        <h1>Admin Dashboard</h1>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        >
+
+        <button id="login-btn">
+            Access Dashboard
+        </button>
+
+        <p id="error"></p>
+
+    </div>
+
+    <div id="dashboard" style="display:none;">
+
+        <h1>WasteWise Impact Dashboard</h1>
+
+        <div class="stats">
+
+            <div class="card">
+                <h3>Total Assessments</h3>
+                <h2 id="totalAssessments">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average Score</h3>
+                <h2 id="averageScore">0%</h2>
+            </div>
+
+            <div class="card">
+                <h3>Highest Score</h3>
+                <h2 id="highestScore">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Most Common Weak Area</h3>
+                <h2 id="weakArea">-</h2>
+            </div>
+
+        </div>
+
+        <h2>Recent Participants</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+
+            <tbody id="participantTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script type="module" src="impact.js"></script>
+
+</body>
+</html>
