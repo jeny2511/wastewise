@@ -34,6 +34,8 @@ async function searchWaste() {
 
     const data = await response.json();
 
+    console.log("DATA:", data);
+
     if (!response.ok) {
       throw new Error(data.error || "Function Error");
     }
