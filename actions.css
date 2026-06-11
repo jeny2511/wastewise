@@ -13,7 +13,7 @@ body{
 
     max-width:800px;
 
-    margin:auto;
+    margin:20px auto;
 }
 
 h1{
@@ -48,7 +48,7 @@ button{
 
     border-radius:15px;
 
-    margin-top:30px;
+    margin-top:20px;
 
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
 
