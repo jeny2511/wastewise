@@ -1,98 +1,71 @@
 body{
-
     font-family:Arial,sans-serif;
-
     background:#f4f4f4;
-
     margin:0;
-
+    padding:20px;
 }
 
 .container{
-
     max-width:1200px;
-
     margin:auto;
-
-    padding:40px 20px;
-
     text-align:center;
-
 }
 
 h1{
-
     color:#2ecc71;
+    font-size:42px;
+    margin-bottom:15px;
+}
 
+.container > p{
+    font-size:22px;
+    line-height:1.6;
+    margin-bottom:30px;
 }
 
 .gallery{
-
     display:grid;
-
-    grid-template-columns:1fr;
-
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
     gap:25px;
-
-    margin-top:40px;
-
 }
 
 .card{
-
     background:white;
-
     padding:20px;
-
     border-radius:15px;
-
-    box-shadow:
-    0 4px 10px rgba(0,0,0,0.1);
-
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
 .card img{
-
     width:100%;
-
-    max-height:350px;
-
-    object-fit:contain;
-
     border-radius:10px;
 }
 
 .card h3{
-
     color:#2ecc71;
-
     margin-top:15px;
-
+    font-size:28px;
 }
 
 .card p{
-
-    line-height:1.6;
-
+    font-size:20px;
+    line-height:1.7;
     color:#555;
-
     margin-top:10px;
-
 }
 
-@media (max-width:768px){
+@media(max-width:768px){
 
-    .container{
-        padding:20px 15px;
+    body{
+        padding:10px;
     }
 
     h1{
-        font-size:32px;
+        font-size:34px;
     }
 
-    .container p{
+    .container > p{
         font-size:18px;
-        line-height:1.6;
     }
 
     .gallery{
@@ -100,7 +73,11 @@ h1{
     }
 
     .card{
-        padding:20px;
+        padding:15px;
+    }
+
+    .card img{
+        width:100%;
     }
 
     .card h3{
@@ -109,7 +86,6 @@ h1{
 
     .card p{
         font-size:18px;
-        line-height:1.7;
     }
 
 }
