@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WasteWise Certificate</title>
+
+    <link rel="stylesheet" href="certificate.css" />
+  </head>
+
+  <body>
+    <div class="certificate">
+      <img src="images/wastewise-logo.png" alt="WasteWise Logo" class="logo" />
+
+      <h1>GREEN CITIZEN CERTIFICATE</h1>
+
+      <p>This certifies that</p>
+
+      <h2 id="certificate-name">Participant Name</h2>
+
+      <p>
+        has successfully taken the WasteWise Green Citizen Pledge and committed
+        to responsible waste management and environmental sustainability.
+      </p>
+
+      <p id="certificate-date"></p>
+
+      <hr class="team-line">
+
+      <h3>Team WasteWise ♻️</h3>
+
+      <button onclick="downloadCertificate()">Download PDF Certificate</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="certificate.js"></script>
+  </body>
+</html>

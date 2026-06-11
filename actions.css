@@ -1,0 +1,56 @@
+body{
+
+    font-family:Poppins,sans-serif;
+
+    background:#f4f7f9;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.container{
+
+    max-width:800px;
+
+    margin:auto;
+}
+
+h1{
+
+    color:#22c55e;
+}
+
+button{
+
+    background:#22c55e;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    margin:20px 0;
+
+    font-size:16px;
+}
+
+#actionCard{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    margin-top:30px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
+    display:none;
+}

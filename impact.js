@@ -1,11 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-    getFirestore,
-    collection,
-    getDocs
-}
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+  getFirestore,
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -13,114 +12,86 @@ const firebaseConfig = {
   projectId: "wastewise-6bb48",
   storageBucket: "wastewise-6bb48.firebasestorage.app",
   messagingSenderId: "968963179738",
-  appId: "1:968963179738:web:e0c7916841fd3cc6f651e3"
+  appId: "1:968963179738:web:e0c7916841fd3cc6f651e3",
 };
 
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-const loginBtn =
-document.getElementById("login-btn");
+const loginBtn = document.getElementById("login-btn");
 
 loginBtn.addEventListener("click", async () => {
+  const password = document.getElementById("password").value;
 
-    const password =
-    document.getElementById("password").value;
+  if (password !== "WasteWise2026") {
+    document.getElementById("error").innerText = "Wrong Password";
 
-    if(password !== "WasteWise2026"){
+    return;
+  }
 
-        document.getElementById("error")
-        .innerText = "Wrong Password";
+  document.getElementById("login-section").style.display = "none";
 
-        return;
-    }
+  document.getElementById("dashboard").style.display = "block";
 
-    document.getElementById("login-section")
-    .style.display = "none";
-
-    document.getElementById("dashboard")
-    .style.display = "block";
-
-    loadDashboard();
-
+  loadDashboard();
 });
 
-async function loadDashboard(){
+async function loadDashboard() {
+  const querySnapshot = await getDocs(collection(db, "assessments"));
 
-    const querySnapshot =
-    await getDocs(
-        collection(db,"assessments")
-    );
+  const pledgeSnapshot = await getDocs(collection(db, "pledges"));
 
-    let total = 0;
-    let scoreSum = 0;
-    let highest = 0;
+  const totalPledges = pledgeSnapshot.size;
 
-    let weakCounter = {};
+  let total = 0;
+  let scoreSum = 0;
+  let highest = 0;
 
-    const table =
-    document.getElementById(
-        "participantTable"
-    );
+  let weakCounter = {};
 
-    querySnapshot.forEach((doc)=>{
+  const table = document.getElementById("participantTable");
 
-        const data = doc.data();
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
 
-        total++;
+    total++;
 
-        scoreSum += data.score;
+    scoreSum += data.score;
 
-        if(data.score > highest)
-            highest = data.score;
+    if (data.score > highest) highest = data.score;
 
-        data.weakTopics.forEach(topic => {
+    data.weakTopics.forEach((topic) => {
+      weakCounter[topic] = (weakCounter[topic] || 0) + 1;
+    });
 
-            weakCounter[topic] =
-            (weakCounter[topic] || 0)+1;
-
-        });
-
-        table.innerHTML += `
+    table.innerHTML += `
             <tr>
                 <td>${data.name}</td>
                 <td>${data.score}/15</td>
             </tr>
         `;
-    });
+  });
 
-    const avg =
-    total ? ((scoreSum/(total*15))*100)
-    .toFixed(1) : 0;
+  const avg = total ? ((scoreSum / (total * 15)) * 100).toFixed(1) : 0;
 
-    let commonWeak = "-";
-    let max = 0;
+  let commonWeak = "-";
+  let max = 0;
 
-    for(let topic in weakCounter){
-
-        if(weakCounter[topic] > max){
-
-            max = weakCounter[topic];
-            commonWeak = topic;
-
-        }
+  for (let topic in weakCounter) {
+    if (weakCounter[topic] > max) {
+      max = weakCounter[topic];
+      commonWeak = topic;
     }
+  }
 
-    document.getElementById(
-        "totalAssessments"
-    ).innerText = total;
+  document.getElementById("totalAssessments").innerText = total;
 
-    document.getElementById(
-        "averageScore"
-    ).innerText = avg + "%";
+  document.getElementById("averageScore").innerText = avg + "%";
 
-    document.getElementById(
-        "highestScore"
-    ).innerText = highest + "/15";
+  document.getElementById("highestScore").innerText = highest + "/15";
 
-    document.getElementById(
-        "weakArea"
-    ).innerText = commonWeak;
+  document.getElementById("totalPledges").innerText = totalPledges;
 
+  document.getElementById("weakArea").innerText = commonWeak;
 }
